@@ -19,10 +19,11 @@ module.exports = {
                 author,
                 type,
             });
-            console.log(new Date() + " novo livro adicionado.");
+            console.log(new Date() + " novo livro adicionado.\n");
+            return response.json(book);
         }
+        return response.json({ message: "Livro já existente no banco de dados" });
 
-        return response.json(book);
     },
 
     async update(request, response) {
@@ -37,11 +38,11 @@ module.exports = {
 
         await Book.findByIdAndUpdate(id, bookUpdate, (error) => {
             if (error) {
-                console.log("Erro ao atualizar o livro\n");
-                throw error;
+                console.log("Erro ao atualizar o livro\n\n" + error);
+                return response.json({ message: "Erro na operação" });
             }
             else {
-                console.log(new Date() + " livro atualizado");
+                console.log(new Date() + " livro atualizado\n");
                 return response.json({ message: "Livro atualizado" });
             }
         });
@@ -49,14 +50,13 @@ module.exports = {
 
     async destroy(request, response) {
         const { id } = request.params;
-        console.log(request.params);
 
-        const book = await Book.findByIdAndDelete(id, (error) => {
+        await Book.findByIdAndDelete(id, (error) => {
             if (error) {
-                console.log("Erro ao deletar o livro\n");
-                throw error;
+                console.log("Erro ao deletar o livro\n\n" + error);
+                return response.json({ message: "Erro na operação" });
             } else {
-                console.log(new Date() + " livro deletado");
+                console.log(new Date() + " livro deletado\n");
                 return response.json({ message: 'Livro removido' });
             }
         });
