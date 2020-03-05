@@ -1,0 +1,23 @@
+{
+  "name": "express-api-example",
+  "version": "1.0.0",
+  "description": "Simple REST API made with Express.js and MongoDB for example purposes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucianovianna/express-api-example.git"
+  },
+  "author": "Luciano Vianna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucianovianna/express-api-example/issues"
+  },
+  "homepage": "https://github.com/lucianovianna/express-api-example#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.3"
+  }
+}
